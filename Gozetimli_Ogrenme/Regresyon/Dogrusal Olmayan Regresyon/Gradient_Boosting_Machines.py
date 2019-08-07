@@ -18,10 +18,8 @@ X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.25,random_state=4
 
 gbm_model=GradientBoostingRegressor()
 gbm_model.fit(X_train,y_train)
-
 y_pred=gbm_model.predict(X_test)
 print(np.sqrt(mean_squared_error(y_test,y_pred)))
-
 gbm_params={'learning_rate':[0.001,0.01,0.1,0.2],
             'max_depth':[3,5,8,50,100],
             'n_estimators':[200,500,1000,2000],
