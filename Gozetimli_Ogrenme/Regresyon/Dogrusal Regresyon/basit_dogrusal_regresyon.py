@@ -40,8 +40,8 @@ print("tvalue:","%.2f",model.tvalues[0:1])
 print(model.mse_model)
 print(model.rsquared)
 print(model.rsquared_adj)
-#buraya kadar modelimizi kurduk ve kendi kişielleştirmlerimize göre
-#albileceğimiz bazı şerleri aldık
+#buraya kadar modelimizi kurduk ve kendi kişielleştirimlerimize göre
+#alabileceğimiz bazı şerleri aldık
 
 #modelin tahmin ettiği değerlere erişmek
 print(model.fittedvalues[0:5])
