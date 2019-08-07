@@ -16,14 +16,12 @@ y=df["Salary"]
 X_=df.drop(["Salary","League","Division","NewLeague"],axis=1).astype("float64")
 X=pd.concat([X_,dms[["League_N","Division_W","NewLeague_N"]]],axis=1)
 X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.25,random_state=42)
-
 DM_train=xgb.DMatrix(data=X_train,label=y_train)
 DM_test=xgb.DMatrix(data=X_test,label=y_test)
-xgb_model=XGBRegressor().fit(X_train,y_train)
 
+xgb_model=XGBRegressor().fit(X_train,y_train)
 y_pred=xgb_model.predict(X_test)
 print(np.sqrt(mean_squared_error(y_test,y_pred)))
-
 xgb_grid={'colsample_bytree':[0.4,0.5,0.6,0.9,1],
           'n_estimators':[100,200,500,1000],
           'max_depth':[2,3,4,5,6],
