@@ -6,7 +6,6 @@ from matplotlib.pyplot import *
 import matplotlib.pyplot as plt
 import numpy as np
 
-
 hit=pd.read_csv("Hitters.csv")
 df=hit.copy()
 df=df.dropna()
@@ -35,7 +34,6 @@ plt.show()"""
 
 y_pred=ridge_model.predict(X_test)
 print(np.sqrt(mean_squared_error(y_test,y_pred)))
-
 ridge_cv_model=RidgeCV(alphas=lambdalar,scoring='neg_mean_squared_error',normalize=True)
 ridge_cv_model.fit(X_train,y_train)
 print(ridge_cv_model.alpha_)
