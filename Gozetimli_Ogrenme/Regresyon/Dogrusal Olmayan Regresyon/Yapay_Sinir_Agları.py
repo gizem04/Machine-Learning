@@ -24,11 +24,9 @@ X_train_scaled=scaler.transform(X_train)
 X_test_scaled=scaler.transform(X_test)
 mlp_model=MLPRegressor(hidden_layer_sizes=(100,20)).fit(X_train_scaled,y_train)
 print(mlp_model,mlp_model.n_layers_)
-
 print(mlp_model.predict(X_train_scaled)[0:5])
 y_pred=mlp_model.predict(X_test_scaled)
 print(np.sqrt(mean_squared_error(y_test,y_pred)))
-
 mlp_params={'alpha':[0.1,0.01,0.02,0.005],
             'hidden_layer_sizes':[(20,20),(100,50,150),(300,200,150)],
             'activation':['relu','logistic']}
