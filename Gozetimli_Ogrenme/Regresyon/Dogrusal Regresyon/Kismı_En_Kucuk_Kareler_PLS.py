@@ -21,14 +21,12 @@ y_pred=pls_model.predict(X_train)
 print(np.sqrt(mean_squared_error(y_train,y_pred)))
 y_pred=pls_model.predict(X_test)
 print(np.sqrt(mean_squared_error(y_test,y_pred)))
-
 cv_10=model_selection.KFold(n_splits=10,shuffle=True,random_state=1)
 RMSE=[]
 for i in np.arange(1,X_train.shape[1]+1):
     pls=PLSRegression(n_components=i)
     score=np.sqrt(-1*cross_val_score(pls,X_train,y_train,cv=cv_10,scoring='neg_mean_squared_error').mean())
     RMSE.append(score)
-
 plt.plot(np.arange(1,X_train.shape[1]+1),np.array(RMSE),'-v',c="r")
 plt.xlabel('Bileşen Sayısı')
 plt.ylabel('RMSE')
