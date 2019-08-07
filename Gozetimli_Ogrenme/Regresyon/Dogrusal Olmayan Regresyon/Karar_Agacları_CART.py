@@ -19,7 +19,6 @@ y=df["Salary"]
 X_=df.drop(["Salary","League","Division","NewLeague"],axis=1).astype("float64")
 X=pd.concat([X_,dms[["League_N","Division_W","NewLeague_N"]]],axis=1)
 X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.25,random_state=42)
-
 X_train=pd.DataFrame(X_train["Hits"])
 X_test=pd.DataFrame(X_test["Hits"])
 
@@ -34,12 +33,10 @@ plt.xlabel('atış sayısı(Hits)')
 plt.ylabel('maaş(salary)')
 plt.show()
 print(skompile(cart_model.predict))
-
 print(cart_model.predict(X_test)[0:5])
 print(cart_model.predict([[91]]))
 y_pred=cart_model.predict((X_test))
 print(np.sqrt(mean_squared_error(y_test,y_pred)))
-
 cart_params={"min_samples_split":range(2,100),
              "max_leaf_nodes":range(2,10)}
 cart_cv_model=GridSearchCV(cart_model,cart_params,cv=10)
