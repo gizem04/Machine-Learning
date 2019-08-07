@@ -2,7 +2,6 @@ from warnings import filterwarnings
 filterwarnings('ignore')
 import numpy as np
 from sklearn.metrics import mean_squared_error
-import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.model_selection import train_test_split,GridSearchCV
 from catboost import CatBoostRegressor
@@ -21,7 +20,6 @@ catb_model=catb.fit(X_train,y_train)
 
 y_pred=catb_model.predict(X_test)
 print(np.sqrt(mean_squared_error(y_test,y_pred)))
-
 catb_grid={'iterations':[200,500,1000,2000],
            'learning_rate':[0.01,0.03,0.05,0.1],
            'depth':[3,4,5,6,7,8]}
