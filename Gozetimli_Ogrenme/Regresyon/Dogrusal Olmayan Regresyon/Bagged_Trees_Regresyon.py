@@ -2,7 +2,6 @@ from warnings import filterwarnings
 filterwarnings('ignore')
 import numpy as np
 from sklearn.metrics import mean_squared_error
-import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.model_selection import train_test_split,ShuffleSplit,GridSearchCV,cross_val_score
 from sklearn.ensemble import BaggingRegressor
