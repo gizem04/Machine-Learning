@@ -18,11 +18,9 @@ X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.25,random_state=4
 
 rf_model=RandomForestRegressor(random_state=42)
 rf_model.fit(X_train,y_train)
-
 print(rf_model.predict(X_test)[0:5])
 y_pred=rf_model.predict(X_test)
 print(np.sqrt(mean_squared_error(y_test,y_pred)))
-
 rf_params={'max_depth':list(range(1,10)),
            'max_features':[3,5,10,15],
            'n_estimators':[100,200,500,1000,2000]}
