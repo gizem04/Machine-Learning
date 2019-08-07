@@ -18,17 +18,13 @@ dms=pd.get_dummies(df[['League','Division','NewLeague']])
 dms.head()
 y=df["Salary"]
 X_=df.drop(["Salary","League","Division","NewLeague"],axis=1).astype("float64")
-X_.head()
 X=pd.concat([X_,dms[["League_N","Division_W","NewLeague_N"]]],axis=1)
-X.head()
-
 X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.20,random_state=40)
 training=df.copy()
 
 pca=PCA()
 X_reduced_train=pca.fit_transform(scale(X_train))
 np.cumsum(np.round(pca.explained_variance_ratio_,decimals=4)*100)[0:10]
-
 lm=LinearRegression()
 pcr_model=lm.fit(X_reduced_train,y_train)
 print(pcr_model.intercept_)
@@ -41,7 +37,6 @@ pca2=PCA()
 X_reduced_test=pca2.fit_transform(scale(X_test))
 y_pred=pcr_model.predict(X_reduced_test)
 np.sqrt(mean_squared_error(y_test,y_pred))
-
 cv_10=model_selection.KFold(n_splits=10,shuffle=True,random_state=1)
 RMSE=[]
 for i in np.arange(1,X_reduced_train.shape[1]+1):
@@ -51,7 +46,6 @@ for i in np.arange(1,X_reduced_train.shape[1]+1):
                                                      cv=cv_10,
                                                      scoring='neg_mean_squared_error').mean())
     RMSE.append(score)
-
 plt.plot(RMSE,'-v')
 plt.xlabel('Bileşen Sayısı')
 plt.ylabel('RMSE')
