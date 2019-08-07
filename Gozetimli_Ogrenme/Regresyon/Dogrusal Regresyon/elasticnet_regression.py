@@ -4,7 +4,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 import numpy as np
 
-
 hit=pd.read_csv("Hitters.csv")
 df=hit.copy()
 df=df.dropna()
@@ -18,7 +17,6 @@ training=df.copy()
 enet_model=ElasticNet().fit(X_train,y_train)
 y_pred=enet_model.predict(X_test)
 print(np.sqrt(mean_squared_error(y_test,y_pred)))
-
 enet_cv_model=ElasticNetCV(cv=10, random_state=0)
 enet_cv_model.fit(X_train,y_train)
 print(enet_cv_model.alpha_)
