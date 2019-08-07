@@ -18,7 +18,6 @@ X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.25,random_state=4
 
 lgbm=LGBMRegressor()
 lgbm_model=lgbm.fit(X_train,y_train)
-
 y_pred=lgbm_model.predict(X_test,num_iteration=best_iteration_)
 print(np.sqrt(mean_squared_error(y_test,y_pred)))
 lgbm_grid={'learning_rate':[0.01,0.1,1,0.5],
