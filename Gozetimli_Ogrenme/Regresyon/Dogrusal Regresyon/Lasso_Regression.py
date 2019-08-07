@@ -37,7 +37,6 @@ plt.show()"""
 
 y_pred=lasso_model.predict(X_test)
 print(np.sqrt(mean_squared_error(y_test,y_pred)))
-
 lasso_cv_model=LassoCV(alphas=None,cv=10, max_iter=10000,normalize=True)
 lasso_cv_model.fit(X_train,y_train)
 print(lasso_cv_model.alpha_)
