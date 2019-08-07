@@ -19,7 +19,6 @@ knn_model=KNeighborsRegressor().fit(X_train,y_train)
 print(knn_model.n_neighbors)
 y_pred=knn_model.predict(X_test)
 print(np.sqrt(mean_squared_error(y_test,y_pred)))
-
 RMSE=[]
 RMSE_CV=[]
 for k in range(10):
@@ -32,7 +31,6 @@ for k in range(10):
     RMSE_CV.append(rmse_cv)
     print("k={} için RMSE değeri: {}".format(k,RMSE))
     print("k={} için RMSE değeri: {}".format(k, RMSE_CV))
-
 knn_params={'n_neighbors':np.arange(1,30,1)}
 print(np.arange(1,30,1))
 knn=KNeighborsRegressor()
