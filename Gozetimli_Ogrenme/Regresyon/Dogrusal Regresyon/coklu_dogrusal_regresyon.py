@@ -5,7 +5,6 @@ from sklearn.metrics import mean_squared_error
 import statsmodels.api as sm
 import numpy as np
 
-
 ad=pd.read_csv("Advertising.csv",usecols=[1,2,3,4])
 df=ad.copy()
 print(df.head())
