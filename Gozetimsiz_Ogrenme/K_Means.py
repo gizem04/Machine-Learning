@@ -27,15 +27,12 @@ kumeler=k_fit.labels_
 plt.scatter(df.iloc[:,0],df.iloc[:,1],c=kumeler,s=50,cmap="viridis")
 merkezler=k_fit.cluster_centers_
 plt.scatter(merkezler[:,0],merkezler[:,1],c="black",s=200,alpha=0.5)
-
-
 kmeans=KMeans(n_clusters=3)
 k_fit=kmeans.fit(df)
 plt.rcParams['figure.figsize']=(16,9)
 fig=plt.figure()
 ax=Axes3D(fig)
 ax.scatter(df.iloc[:,0],df.iloc[:,1],df.iloc[:,2])
-
 
 #merkezlerin grafik üzerinde işaretlenmesi
 ax.scatter(df.iloc[:,0],df.iloc[:,1],df.iloc[:,2],c=kumeler)
