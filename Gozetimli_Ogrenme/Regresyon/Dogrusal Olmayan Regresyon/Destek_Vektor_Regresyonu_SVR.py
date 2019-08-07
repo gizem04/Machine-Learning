@@ -5,7 +5,7 @@ from sklearn.svm import SVR
 from sklearn.metrics import mean_squared_error,r2_score
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
-from sklearn import model_selection
+
 
 
 hit=pd.read_csv("Hitters.csv")
@@ -34,7 +34,6 @@ lm_model=LinearRegression().fit(X_train,y_train)
 lm_pred=lm_model.predict(X_train)
 print("y={0}+{1}x".format(lm_model.intercept_, lm_model.coef_[0]))
 print((lm_model.intercept_)+(lm_model.coef_[0])*(X_train["Hits"][0:1]))
-
 plt.scatter(X_train,y_train,alpha=0.5,s=23)
 plt.plot(X_train,lm_pred,'g')
 plt.plot(X_train,y_pred,'r')
@@ -44,7 +43,6 @@ plt.show()
 
 y_pred=svr_model.predict(X_test)
 print(np.sqrt(mean_squared_error(y_test,y_pred)))
-
 svr_params={"C":np.arange(0.1,2,0.1)}
 svr_cv_model=GridSearchCV(svr_model,svr_params,cv=10).fit(X_train,y_train)
 print(pd.Series(svr_cv_model.best_params_)[0])
