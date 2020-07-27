@@ -23,7 +23,7 @@ IMAGE_HEIGHT=128
 IMAGE_SIZE=(IMAGE_WIDTH, IMAGE_HEIGHT)
 RESIM_KANALLAR=3
 
-dosyaİsimleri = os.listdir("train2/")
+dosyaİsimleri = os.listdir("train/")
 kategoriler = []
 for dosyaİsmi in dosyaİsimleri:
     kategori = dosyaİsmi.split('.')[0]
